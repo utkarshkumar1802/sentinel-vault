@@ -6,16 +6,17 @@ require('dotenv').config();
 const app = express();
 
 // 1. MIDDLEWARE (Must be before routes)
+// In your backend server.js
+// Allow your specific Vercel URL and localhost for testing
 app.use(cors({
   origin: [
-    /\.vercel\.app$/,            // 👈 Allows ANY URL ending in .vercel.app
-    "http://localhost:5173"      // Allows local testing
+    "https://sentinel-vault-eou9j1v5g-utkarshkumar1802s-projects.vercel.app",
+    "https://sentinel-vault.vercel.app",
+    "http://localhost:5173"
   ],
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "x-auth-token"]
 }));
-app.use(express.json()); 
 
 // 2. ROUTES
 app.use('/api/auth', require('./routes/auth.js'));
