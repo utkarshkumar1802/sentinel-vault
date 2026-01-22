@@ -9,12 +9,13 @@ const app = express();
 // In your backend server.js
 // Allow your specific Vercel URL and localhost for testing
 app.use(cors({
+  // Add your specific Vercel URL here
   origin: [
-    "https://sentinel-vault-eou9j1v5g-utkarshkumar1802s-projects.vercel.app",
-    "https://sentinel-vault.vercel.app",
+    "https://sentinel-vault-six.vercel.app", 
     "http://localhost:5173"
   ],
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "x-auth-token"]
 }));
 
