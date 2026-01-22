@@ -7,7 +7,10 @@ const app = express();
 
 // 1. MIDDLEWARE (Must be before routes)
 app.use(cors({
-  origin: ["https://sentinel-vault-lihdp8bj2-utkarshkumar1802s-projects.vercel.app", "http://localhost:5173"], 
+  origin: [
+    /\.vercel\.app$/,            // 👈 Allows ANY URL ending in .vercel.app
+    "http://localhost:5173"      // Allows local testing
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "x-auth-token"]
