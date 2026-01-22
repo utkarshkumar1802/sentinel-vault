@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // 👈 Essential for navigation
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const { email, password } = formData;
 
+  // 🕵️‍♂️ Use Environment Variable for Production
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/login', { email, password });
+      // 👈 Use full URL to reach Render backend
+      const res = await axios.post(`${API_URL}/api/auth/login`, { email, password });
       localStorage.setItem('token', res.data.token);
       window.location.reload(); 
     } catch (err) {
@@ -38,7 +42,6 @@ const Login = () => {
           </button>
         </form>
 
-        {/* 🕵️‍♂️ NEW REGISTRATION OPTION */}
         <div style={{ marginTop: '25px', textAlign: 'center', borderTop: '1px solid #30363d', paddingTop: '15px' }}>
           <p style={{ color: '#8b949e', fontSize: '14px' }}>
             New recruit?{' '}
@@ -52,7 +55,6 @@ const Login = () => {
   );
 };
 
-// Reusable styles for a cleaner component
 const inputStyle = { width: '100%', padding: '12px', marginBottom: '20px', background: '#0d1117', border: '1px solid #30363d', color: 'white', borderRadius: '5px', boxSizing: 'border-box' };
 const buttonStyle = { width: '100%', padding: '12px', background: '#238636', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px' };
 
