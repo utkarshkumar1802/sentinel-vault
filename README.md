@@ -28,7 +28,6 @@ To review this locally, follow these steps:
 
 cd server
 npm install
-# Create a .env file with your MONGO_URI and JWT_SECRET
 npm start
 2. Frontend Setup
 
