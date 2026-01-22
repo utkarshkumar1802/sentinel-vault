@@ -25,15 +25,16 @@ Security: Bcrypt.js, JsonWebToken
 To review this locally, follow these steps:
 
 1. Backend Setup
-
 cd server
 npm install
 npm start
-2. Frontend Setup
 
+3. Frontend Setup
 cd client
 npm install
 npm run dev
+
+
 🕵️‍♂️ Admin Access
 The highlight of this project is the Admin Command Center. To unlock it, manually update the user role to admin in your MongoDB collection. This provides access to real-time system stats and a centralized dashboard for user management.
 
